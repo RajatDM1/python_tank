@@ -511,7 +511,7 @@ def gameloop():
     fire_power = 50
     power_change = 0
 
-    xlocation = (display_width/2)+ random.randint(-0.2*display_width,0.2*display_width)
+    xlocation = (display_width/2)+ random.randint(-0.1*display_width,0.1*display_width)
     randomHeight = random.randint(display_height*0.1,display_height*0.6)
 
     
@@ -571,6 +571,11 @@ def gameloop():
                                 gun = tank(mainTankX, mainTankY, currentTurPos)
                                 enemy_gun = enemy_tank(enemyTankX,enemyTankY,8)
                                 fire_power += power_change
+                                
+                                if fire_power > 100:
+                                    fire_power = 100
+                                elif fire_power < 1:
+                                    fire_power = 1
 
                                 power(fire_power)
 
@@ -619,6 +624,10 @@ def gameloop():
         gun = tank(mainTankX, mainTankY, currentTurPos)
         enemy_gun = enemy_tank(enemyTankX,enemyTankY,8)
         fire_power += power_change
+        if fire_power > 100:
+            fire_power = 100
+        elif fire_power < 1:
+            fire_power = 1
 
         power(fire_power)
 
