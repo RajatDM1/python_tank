@@ -252,9 +252,20 @@ def fireshell(xy, tankx, tanky, turPos,gun_power,xlocation,barrier_width, random
             hit_y = int(display_height-ground_height)
             #print("Impact :", hit_x, hit_y)
             explosion(hit_x, hit_y)
-            if enemyTankX + 15 > hit_x > enemyTankX- 15:
-                print("HIT Enemy TARGET!")
+             
+            if enemyTankX + 10 > hit_x > enemyTankX- 10:
+                print("Critical Hit")
                 damage = 25
+            elif enemyTankX + 15> hit_x > enemyTankX- 15:
+                print("Hard Hit")
+                damage = 20
+            elif enemyTankX + 20> hit_x > enemyTankX- 20:
+                print("Medium  Hit")
+                damage = 10
+            elif enemyTankX + 20> hit_x > enemyTankX- 20:
+                print("Light  Hit")
+                damage = 5
+                
             fire = False
 
         check_x_1 = startingShell[0] <= xlocation + barrier_width
@@ -336,7 +347,7 @@ def e_fireshell(xy, tankx, tanky, turPos,gun_power,xlocation,barrier_width, rand
         #print(startingShell[0],startingShell[1])
         pygame.draw.circle(gameDisplay, green, (startingShell[0],startingShell[1]),5)
 
-        gun_power = random.randrange(int(currentPower*0.7),int(currentPower*1.30))       
+        gun_power = random.randrange(int(currentPower*0.9),int(currentPower*1.10))       
         startingShell[0] += (12-turPos)*2
         startingShell[1] += int((((startingShell[0]-xy[0])*0.01/(gun_power/50))**2) - (turPos+turPos/(12-turPos)))
         
@@ -344,9 +355,18 @@ def e_fireshell(xy, tankx, tanky, turPos,gun_power,xlocation,barrier_width, rand
             #print("Last  Shell: ", startingShell[0], startingShell[1])
             hit_x = int((startingShell[0]*display_height-ground_height)/startingShell[1])
             hit_y = int(display_height-ground_height)
-            if pTankX + 15 > hit_x > pTankX- 15:
-                print("HIT TARGET!")
+            if pTankX + 10 > hit_x > pTankX- 10:
+                print("Critical Hit")
                 damage = 25
+            elif pTankX + 15> hit_x > pTankX- 15:
+                print("Hard Hit")
+                damage = 20
+            elif pTankX + 20> hit_x > pTankX- 20:
+                print("Medium  Hit")
+                damage = 10
+            elif pTankX + 20> hit_x > pTankX- 20:
+                print("Light  Hit")
+                damage = 5
             explosion(hit_x, hit_y)
             fire = False
 
